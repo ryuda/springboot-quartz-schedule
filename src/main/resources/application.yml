@@ -1,0 +1,72 @@
+server:
+  port: 8081
+  session-timeout: 60
+  tomcat:
+    max-threads: 100
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /quartz
+
+spring:
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        rewriteBatchedStatements: true
+        useLocalSessionState: true
+        useServerPrepStmts: true
+#    url: jdbc:mysql://192.168.1.15:3306/ryuda?useSSL=false&allowPublicKeyRetrieval=true
+    jdbc-url: jdbc:mysql://192.168.1.15:3306/ryuda?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 1224
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    show-sql: true
+  quartz:
+    auto-startup: true
+    properties:
+      org:
+        quartz:
+          jobStore:
+            class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
+            clusterCheckinInterval: 15000
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            isClustered: true
+            misfireThreshold: 60000
+            tablePrefix: QRTZ_
+            useProperties: true
+          scheduler:
+            instanceId: AUTO
+          threadPool:
+            threadCount: 20
+            threadNamePrefix: QuartzScheduler
+    scheduler-name: QuartzScheduler
+
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: trace
+        hikari.HikariConfig: debug
+    org:
+      hibernate: debug
+      hibernate.SQL: debug
+      hibernate.type: trace
+      spring: debug
+      springframework:
+        orm:
+          jpa: debug
