@@ -23,6 +23,7 @@ public class QuartzConfig {
     private final DataSource dataSource;
     private final JobsListener jobsListener;
     private final TriggersListener triggersListener;
+
     /**
      * Quartz 관련 설정
      *

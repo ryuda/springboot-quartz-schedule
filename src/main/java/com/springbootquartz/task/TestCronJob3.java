@@ -1,11 +1,8 @@
-package com.springbootquartz.cronjob;
+package com.springbootquartz.task;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.springframework.scheduling.quartz.QuartzJobBean;
-
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
 /**
  * 인터럽트 테스트용

@@ -38,7 +38,8 @@ public class QuartzServiceImpl implements QuartzService {
         Class<Job> jobClass = null;
 
         try {
-            jobClass = (Class<Job>) Class.forName("com.springbootquartz.cronjob." +jobRequest.getJobClass());
+            jobClass = (Class<Job>) Class.forName("com.springbootquartz.task." +jobRequest.getJobClass());
+
             jobDetail = QuartzUtils.createJob(jobRequest,jobClass,context);
             trigger = QuartzUtils.createTrigger(jobRequest);
 

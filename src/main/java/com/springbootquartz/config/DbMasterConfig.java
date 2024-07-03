@@ -1,6 +1,5 @@
 package com.springbootquartz.config;
 
-
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -21,7 +20,6 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @MapperScan(value = "com.springbootquartz.mapper", sqlSessionFactoryRef="DbMasterSessionFactory")
 public class DbMasterConfig {
-
 
     @Primary
     @Bean(name = "DbMasterSource")
